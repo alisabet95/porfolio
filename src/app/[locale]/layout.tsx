@@ -3,6 +3,7 @@ import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/src/i18n/routing';
 import '../globals.css'
+import Head from 'next/head';
 
 export default async function LocaleLayout({
   children,
@@ -19,6 +20,9 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
+      <Head>
+        <meta name="google-site-verification" content="SClRQTWUQDku7CXv2KkWF8E6Rxe3-CGS4PBEPlpFIbM" />
+      </Head>
       <body>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>

@@ -1,12 +1,13 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+
 import { motion, easeOut } from 'framer-motion';
 import {  FaGithub, FaTelegram } from 'react-icons/fa';
 import { BiLogoGmail } from 'react-icons/bi';
 import LanguageSwitcher from './langswitcher';
 import { FaSquareInstagram } from 'react-icons/fa6';
+import Image from 'next/image';
 
 
 export default function HomePage() {
@@ -39,6 +40,7 @@ export default function HomePage() {
               <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('name')}</h1>
               <p className="text-lg md:text-2xl max-w-2xl">{t('intro')}</p>
             </div>
+            <Image src="/ali.jpg" height={200} width={200} alt='my image' className='rounded-4xl'/>
             <LanguageSwitcher current={locale} />
           </motion.div>
         </div>
@@ -53,7 +55,7 @@ export default function HomePage() {
             animate="visible"
             variants={containerVariants}
           >
-            About Me
+            {locale === "en" ? "about me" : "درباره من"}
           </motion.h2>
           <motion.div
             className="max-w-3xl mx-auto text-center text-gray-600"
@@ -143,13 +145,13 @@ export default function HomePage() {
                 <p className="text-gray-500 mb-4">
                   <strong>Impact:</strong> {index === 0 ? 'Engaged 50+ local businesses in Rasht' : 'Increased online sales by 30%'}
                 </p>
-                <Link
+                <a
                   href={project.url}
                   target="_blank"
-                  className="inline-block text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
+                  className="link-to-site"
                 >
                   Visit Project →
-                </Link>
+                </a>
               </motion.div>
             ))}
           </motion.div>
