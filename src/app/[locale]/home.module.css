@@ -1,0 +1,371 @@
+@import url('https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.woff2');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:global(html[lang="fa"]) {
+  font-family: 'Shabnam', sans-serif;
+  direction: rtl;
+}
+
+.main {
+  min-height: 100vh;
+  background-color: #f5f5f4;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  background-image: linear-gradient(to bottom right, #14b8a6, #2563eb, #7c3aed);
+  color: #ffffff;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .headerContent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.headerText {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .headerText {
+    text-align: left;
+  }
+}
+
+.h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color:rgb(106, 227, 106);
+}
+
+@media (min-width: 768px) {
+  .h1 {
+    font-size: 3.75rem;
+  }
+}
+
+.intro {
+  font-size: 1.25rem;
+  max-width: 28rem;
+  font-weight: 600;
+  line-height: 1.625;
+  text-align: center;
+  color:rgb(222, 181, 76);
+}
+
+@media (min-width: 768px) {
+  .intro {
+    font-size: 1.5rem;
+  }
+}
+
+.taglineWrapper {
+  margin-top: 1rem;
+  max-width: 28rem;
+}
+
+.tagline {
+  font-size: 1.125rem;
+  color: #f3f4f6;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.profileImage {
+  border-radius: 9999px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-image: linear-gradient(to top right, rgba(20, 184, 166, 0.3), rgba(142, 84, 243, 0.3));
+}
+
+.section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #ffffff;
+}
+
+.skillsSection {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #f5f5f4;
+}
+
+.h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #111827;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .h2 {
+    font-size: 3.125rem;
+  }
+}
+
+.h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.aboutContent {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #374151;
+  line-height: 1.625;
+}
+
+.paragraph {
+  font-size: 1.125rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .skillsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .skillsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .skillsGrid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.skillCard {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #1f2937;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.skillColor0 {
+  background-image: linear-gradient(135deg, #14b8a6, #34d399);
+}
+
+.skillColor1 {
+  background-image: linear-gradient(135deg, #2563eb, #60a5fa);
+}
+
+.skillColor2 {
+  background-image: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+.skillColor3 {
+  background-image: linear-gradient(135deg, #ec4899, #f472b6);
+}
+
+.skillCard:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.projectCard {
+  background-color: #f5f5f4;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.projectMeta {
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.projectLinkWrapper {
+  margin-top: auto;
+  text-align: center;
+}
+
+.projectLink {
+  display: inline-block;
+  background-color: #14b8a6;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+
+.projectLink:hover {
+  background-color: #0d2194;
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #374151;
+  font-size: 1.125rem;
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #14b8a6;
+}
+
+.socialIconInstagram {
+  font-size: 1.875rem;
+  color: #ec4899;
+}
+
+.socialLink:hover .socialIconInstagram {
+  color: #db2777;
+}
+
+.socialIconGmail {
+  font-size: 1.875rem;
+  color: #ef4444;
+}
+
+.socialLink:hover .socialIconGmail {
+  color: #dc2626;
+}
+
+.socialIconGithub {
+  font-size: 1.875rem;
+  color: #7c3aed;
+}
+
+.socialLink:hover .socialIconGithub {
+  color: #6d28d9;
+}
+
+.socialIconTelegram {
+  font-size: 1.875rem;
+  color: #60a5fa;
+}
+
+.socialLink:hover .socialIconTelegram {
+  color: #3b82f6;
+}
+
+.footer {
+  background-color: #1f2937;
+  color: #ffffff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.footerText {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #d1d5db;
+}
+
+.footerHighlight {
+  color: #14b8a6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:global(.fade-in) {
+  animation: fadeIn 1s ease-out;
+}

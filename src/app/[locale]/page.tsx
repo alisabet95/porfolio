@@ -1,14 +1,13 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-
 import { motion, easeOut } from 'framer-motion';
-import {  FaGithub, FaTelegram } from 'react-icons/fa';
+import { FaGithub, FaTelegram } from 'react-icons/fa';
 import { BiLogoGmail } from 'react-icons/bi';
 import LanguageSwitcher from './langswitcher';
-import { FaSquareInstagram } from 'react-icons/fa6';
 import Image from 'next/image';
-
+import { FaSquareInstagram } from 'react-icons/fa6';
+import styles from './home.module.css';
 
 export default function HomePage() {
   const t = useTranslations('Portfolio');
@@ -21,60 +20,72 @@ export default function HomePage() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className={styles.main}>
       {/* Header Section */}
-      <header className="bg-gradient-to-r from-indigo-700 to-purple-600 text-white py-20 relative">
-        <div className="container mx-auto px-4">
+      <header className={styles.header}>
+        <div className={styles.container}>
           <motion.div
-            className="flex justify-between items-center"
+            className={styles.headerContent}
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('name')}</h1>
-              <p className="text-lg md:text-2xl max-w-2xl">{t('intro')}</p>
+            <div   className={styles.headerText}>
+              <h1 className={styles.h1}>{t('name')}</h1>
+              <p dir='rtl' className={styles.intro}>{t('intro')}</p>
+              <motion.div className={styles.taglineWrapper} variants={itemVariants}>
+                <p className={styles.tagline}>
+                  {locale === 'en'
+                    ? 'Crafting seamless digital experiences with a passion for innovation and precision.'
+                    : 'ایجاد تجربه‌های دیجیتال بی‌نقص با اشتیاق به نوآوری و دقت.'}
+                </p>
+              </motion.div>
             </div>
-            <Image src="/ali.jpg" height={200} width={200} alt='my image' className='rounded-4xl'/>
+            <motion.div className={styles.imageContainer} variants={itemVariants} whileHover={{ scale: 1.05 }}>
+              <Image
+                src="/ali.jpg"
+                alt="Ali Sabet"
+                width={220}
+                height={220}
+                className={styles.profileImage}
+              />
+              <div className={styles.imageOverlay}></div>
+            </motion.div>
             <LanguageSwitcher current={locale} />
           </motion.div>
         </div>
       </header>
 
       {/* About Me Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="text-3xl md:text-4xl font-semibold text-center mb-8 text-gray-800"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            {locale === "en" ? "about me" : "درباره من"}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <motion.h2 className={styles.h2} initial="hidden" animate="visible" variants={containerVariants}>
+            {locale === 'en' ? 'About Me' : 'درباره من'}
           </motion.h2>
-          <motion.div
-            className="max-w-3xl mx-auto text-center text-gray-600"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div className={styles.aboutContent} variants={containerVariants} initial="hidden" animate="visible">
             {locale === 'en' && (
-              <p className="mb-4">
-                I’m a passionate Full-Stack Developer with over 5 years of experience building innovative web applications. My expertise spans modern JavaScript frameworks and backend technologies, with a focus on creating user-friendly, scalable solutions.
-              </p>
+              <>
+                <p className={styles.paragraph}>
+                  I’m a dedicated Full-Stack Developer with over 5 years of experience crafting innovative and scalable web applications. My expertise lies in modern JavaScript frameworks, backend technologies, and creating intuitive user experiences that leave a lasting impact.
+                </p>
+                <p className={styles.paragraph}>
+                  When I’m not coding, you can find me exploring new technologies, contributing to open-source projects,solving unsolvable puzzles, reading a good muder-mystery book or enjoying a refreshing hike in nature.
+                </p>
+              </>
             )}
             {locale === 'fa' && (
               <>
-                <p className="mb-4">
-                  من یک توسعه‌دهنده مشتاق با علاقه به فناوری‌های نوین و حل مسائل پیچیده هستم. هدف من ایجاد تجربه‌های کاربری بی‌نظیر و کمک به رشد کسب‌وکارهای دیجیتال است.
+                <p className={styles.paragraph}>
+                  من یک توسعه‌دهنده فول‌استک با بیش از سه سال تجربه در ساخت برنامه‌های وب حرفه‌ای و نوآورانه هستم. تخصص من در چارچوب‌های مدرن جاوااسکریپت، فناوری‌های بک‌اند و ایجاد تجربه‌های کاربری بصری است که تأثیر ماندگاری دارند.
                 </p>
-                <p className="mb-4">
-                  در اوقات فراغتم، به مطالعه در مورد فناوری‌های جدید، پیاده‌روی و کمک به پروژه‌های متن‌باز علاقه دارم.
+                <p className={styles.paragraph}>
+              <br />وقتی کد نمی‌نویسم، مشغول مطالعه فناوری‌های جدید، مشارکت در پروژه‌های متن‌باز، لذت بردن از حل کردن یک پازل پیچیده یا خواندن یک کتاب جنایی هستم.
+                  (اگه شما هم آگاتا کریستی رو خیلی دوست دارین رفیق من هستین)
                 </p>
               </>
             )}
@@ -83,28 +94,18 @@ export default function HomePage() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="text-3xl md:text-4xl font-semibold text-center mb-12 text-gray-800"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
+      <section className={styles.skillsSection}>
+        <div className={styles.container}>
+          <motion.h2 className={styles.h2} initial="hidden" animate="visible" variants={containerVariants}>
             {t('skills.title')}
           </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div className={styles.skillsGrid} variants={containerVariants} initial="hidden" animate="visible">
             {t.raw('skills.list').map((skill: string, index: number) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center text-gray-700 font-medium"
+                className={`${styles.skillCard} ${styles[`skillColor${index % 4}`]}`}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1, rotate: 2 }}
               >
                 {skill}
               </motion.div>
@@ -114,44 +115,37 @@ export default function HomePage() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="text-3xl md:text-4xl font-semibold text-center mb-12 text-gray-800"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <motion.h2 className={styles.h2} initial="hidden" animate="visible" variants={containerVariants}>
             {t('projects.title')}
           </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div className={styles.projectsGrid} variants={containerVariants} initial="hidden" animate="visible">
             {t.raw('projects.list').map((project: { name: string; description: string; url: string }, index: number) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                className={styles.projectCard}
                 variants={itemVariants}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.03, y: -5 }}
               >
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">{project.name}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <p className="text-gray-500 mb-4">
-                  <strong>Technologies:</strong> {index === 0 ? 'Next.js, Prisma, MySQL' : 'React, Tailwind CSS'}
+                <h3 className={styles.h3}>{project.name}</h3>
+                <p className={styles.paragraph}>{project.description}</p>
+                <p className={styles.projectMeta}>
+                  <strong>{locale === 'en' ? 'Technologies:' : 'فناوری‌ها:'}</strong>{' '}
+                   Next.js, Prisma, MySQL, React, Tailwind
                 </p>
-                <p className="text-gray-500 mb-4">
-                  <strong>Impact:</strong> {index === 0 ? 'Engaged 50+ local businesses in Rasht' : 'Increased online sales by 30%'}
+                <p className={styles.projectMeta}>
+                  <strong>{locale === 'en' ? 'Impact:' : 'تأثیر:'}</strong>{' '}
+               {locale === 'en' ?
+                  (index === 0 ? 'Engaged 50+ local businesses in Rasht' : 'Increased online sales by 30%') : (
+                    index === 0 ? "افزایش فروش بیزینسهای شهری" :"طراحی پلتفورم فروش و افزایش 30درصدی"
+                  )}
                 </p>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  className="link-to-site"
-                >
-                  Visit Project →
-                </a>
+                <div className={styles.projectLinkWrapper}>
+                  <a href={project.url} target="_blank" className={styles.projectLink}>
+                    {locale === 'en' ? 'Visit Project →' : '→ مشاهده پروژه'} 
+                  </a>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -159,68 +153,52 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2
-            className="text-3xl md:text-4xl font-semibold mb-8 text-gray-800"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
+      <section className={styles.skillsSection}>
+        <div className={styles.container}>
+          <motion.h2 className={styles.h2} initial="hidden" animate="visible" variants={containerVariants}>
             {t('contact.title')}
           </motion.h2>
-          <motion.p
-            className="text-gray-600 mb-6 max-w-2xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-           {locale === 'en' ?  <span>Interested in collaborating or have a project in mind? Let’s connect and bring your ideas to life!</span>
-           : <span>     اگر دوست دارین با من ارتباط برقرار کنین، راههای زیر هست{<br />} خوشحال میشم بشناسمتون</span>}
+          <motion.p className={styles.paragraph} style={{marginBottom:"30px"}} variants={containerVariants} initial="hidden" animate="visible">
+            {locale === 'en'
+              ? 'Interested in collaborating or have a project in mind? Let’s connect and bring your ideas to life!'
+              : 'علاقه‌مند به همکاری هستید یا  ایده‌ای برای پروژه دارید؟  خوشحال میشم با من ارتباط برقرار کنید و ایده‌هامونو  به واقعیت تبدیل کنیم!'}
           </motion.p>
-          <motion.div
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-center gap-6"
-          >
-     
-            {/* Social Links */}
-            <div className="flex gap-4 justify-center items-center text-lg">
+          <motion.div variants={itemVariants} initial="hidden" animate="visible" className={styles.contactLinks}>
+            <div className={styles.socialLinks}>
               <a
                 href="https://instagram.com/ali.ssabet"
                 target="_blank"
                 aria-label="Instagram"
-                className="hover:text-pink-400 transition-colors flex items-center gap-2"
+                className={styles.socialLink}
               >
-                <FaSquareInstagram className="text-2xl text-pink-500" />
+                <FaSquareInstagram className={styles.socialIconInstagram} />
                 Instagram
               </a>
               <a
                 href="mailto:ali.ssabet1995@gmail.com"
                 target="_blank"
                 aria-label="Email"
-                className="hover:text-red-400 transition-colors flex items-center gap-2"
+                className={styles.socialLink}
               >
-                <BiLogoGmail className="text-2xl text-red-500" />
+                <BiLogoGmail className={styles.socialIconGmail} />
                 Gmail
               </a>
               <a
                 href="https://github.com/alisabet95"
                 target="_blank"
                 aria-label="GitHub"
-                className="hover:text-purple-400 transition-colors flex items-center gap-2"
+                className={styles.socialLink}
               >
-                <FaGithub className="text-2xl text-purple-400" />
+                <FaGithub className={styles.socialIconGithub} />
                 GitHub
               </a>
               <a
                 href="https://t.me/ali_ssabet"
                 target="_blank"
                 aria-label="Telegram"
-                className="hover:text-blue-300 transition-colors flex items-center gap-2"
+                className={styles.socialLink}
               >
-                <FaTelegram className="text-2xl text-blue-300" />
+                <FaTelegram className={styles.socialIconTelegram} />
                 Telegram
               </a>
             </div>
@@ -229,15 +207,10 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <motion.p
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-4 text-sm text-white"
-          >
-            © 2025 Ali Sabet | <span className="text-rose-800">{t('footer')}</span>
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <motion.p className={styles.footerText} variants={containerVariants} initial="hidden" animate="visible">
+            © 2025 Ali Sabet | <span className={styles.footerHighlight}>{t('footer')}</span>
           </motion.p>
         </div>
       </footer>

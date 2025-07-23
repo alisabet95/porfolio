@@ -1,33 +1,110 @@
-//file: src/app/[locale]/layout
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
-import {notFound} from 'next/navigation';
-import {routing} from '@/src/i18n/routing';
-import '../globals.css'
-import Head from 'next/head';
+// src/app/[locale]/layout.tsx
+import '../globals.css';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+
+const supportedLocales = ['en', 'fa'];
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isFA = locale === 'fa';
+
+  const siteUrl = 'https://ali-sabet.vercel.app';
+
+  const title = isFA
+    ? 'علی ثابت | نمونه‌کار توسعه‌دهنده فول‌استک'
+    : 'Ali Sabet | Full-Stack Developer Portfolio';
+
+  const description = isFA
+    ? 'نمونه‌کار علی شفیعی ثابت، توسعه‌دهنده فول‌استک با بیش از ۵ سال تجربه در ساخت برنامه‌های وب نوآورانه و مقیاس‌پذیر با استفاده از نکست‌جی‌اس، ری‌اکت و غیره.'
+    : 'Portfolio of Ali Sabet, a Full-Stack Developer with over 5 years of experience in building innovative and scalable web applications using Next.js, React, and more.';
+
+  return {
+    title: {
+      default: title,
+      template: `%s | Ali Sabet Portfolio`,
+    },
+    description,
+    keywords: [
+      'Ali Sabet',
+      'Full-Stack Developer',
+      'Next.js',
+      'React',
+      'JavaScript',
+      'FastAPI',
+      'Prisma',
+      'MySQL',
+      'Portfolio',
+      ...(isFA ? ['نمونه کار', 'توسعه‌دهنده وب', 'نکست جی اس', 'ری‌اکت'] : []),
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/${locale}`,
+      siteName: 'Ali Sabet Portfolio',
+      images: [
+        {
+          url: `${siteUrl}/ali.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'Ali Sabet Portfolio Preview',
+        },
+      ],
+      locale: isFA ? 'fa_IR' : 'en_US',
+      type: 'website',
+    },
+    alternates: {
+      canonical: `${siteUrl}/${locale}`,
+      languages: {
+        en: `${siteUrl}/en`,
+        fa: `${siteUrl}/fa`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    verification: {
+      google: 'SClRQTWUQDku7CXv2KkWF8E6Rxe3-CGS4PBEPlpFIbM',
+    },
+    authors: [{ name: 'Ali Sabet', url: siteUrl }],
+    icons: {
+      icon: '/favicon.ico',
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: { locale: string };
 }) {
-  // Ensure that the incoming `locale` is valid
-  const {locale} = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  const { locale } = await params;
+
+  if (!hasLocale(supportedLocales, locale)) {
     notFound();
   }
- 
+
   return (
-    <html lang={locale}>
-      <head>
-        <meta name="google-site-verification" content="SClRQTWUQDku7CXv2KkWF8E6Rxe3-CGS4PBEPlpFIbM" />
-      </head>
-      <Head>
-        <meta name="google-site-verification" content="SClRQTWUQDku7CXv2KkWF8E6Rxe3-CGS4PBEPlpFIbM" />
-      </Head>
+    <html lang={locale} dir={locale === 'fa' ? 'rtl' : 'ltr'}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
