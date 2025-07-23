@@ -56,15 +56,28 @@ p {
 }
 
 .gooz{
-background-color: rgb(1, 88, 60);
+background-color: rgb(38, 224, 165);
 padding: 14px 18px;
-border-radius: 5px;
-color:rgb(149, 145, 145);
+border-radius: 5px 10px 0 25px;
+color:rgb(41, 51, 1);
+text-shadow: 10px 10px 10px 10px black;
+transition: all 0.3s ease; /* Optional: for smooth start/stop */
+ 
 }
 
 .gooz:hover{
 background-color: rgb(2, 51, 35);
+color:whitesmoke;
+animation: bounce 0.5s ease; /* Triggers animation on hover */
+  
 }
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
 
 a,p,div,section{
 font-family: 'Shabnam';
