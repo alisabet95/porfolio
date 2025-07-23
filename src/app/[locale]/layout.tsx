@@ -3,15 +3,16 @@ import '../globals.css';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 const supportedLocales = ['en', 'fa'];
 
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = await params; // Resolve the Promise
   const isFA = locale === 'fa';
 
   const siteUrl = 'https://ali-sabet.vercel.app';
@@ -90,10 +91,10 @@ export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: { locale: string };
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale } = await params; // Resolve the Promise
 
   if (!hasLocale(supportedLocales, locale)) {
     notFound();
