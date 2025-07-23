@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply text-gray-900;
+}
+
+html[lang="fa"] {
+  font-family: 'Shabnam', sans-serif;
+  direction: rtl;
+}
+
+/* Custom Utility Classes */
+.container {
+  max-width: 1280px;
+  @apply px-4;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography Enhancements */
+h1, h2, h3 {
+  @apply font-bold tracking-tight;
+}
+
+p {
+  @apply leading-relaxed;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.gooz{
+background-color: aqua;
+padding: 14px 18px;
+border-radius: 5px;
+color:black;
+}
+
+.gooz:hover{
+background-color: rgb(3, 129, 129);
+}
+
+a,p,div,section{
+font-family: 'Shabnam';
+}

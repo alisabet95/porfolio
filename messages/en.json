@@ -1,0 +1,32 @@
+{
+  "Portfolio": {
+    "name": "Ali Sabet",
+    "intro": "Full-Stack Developer passionate about creating innovative web applications",
+    "skills": {
+      "title": "Skills",
+      "list": ["Next.js", "React", "JavaScript", "FastAPI", "Prisma", "MySQL"]
+    },
+    "projects": {
+      "title": "Projects",
+      "list": [
+        {
+          "name": "Natoure Rasht",
+          "description": "A scavenger hunt project for engaging local businesses in Rasht",
+          "url": "https://natoure-rasht.ir"
+        },
+        {
+          "name": "Usha House",
+          "description": "An online clothing shop with modern design and functionality",
+          "url": "https://usha-house.ir"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact Me"
+    },
+    "footer": "Natoure Rasht"
+  },
+  "HomePage": {
+    "title": "Welcome to My Portfolio"
+  }
+}
