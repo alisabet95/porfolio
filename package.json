@@ -1,6 +1,7 @@
 {
   "name": "porfolio",
   "version": "0.1.0",
+  "author": "Ali Sabet",
   "private": true,
   "type": "module",
   "scripts": {
