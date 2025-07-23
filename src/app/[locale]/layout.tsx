@@ -20,6 +20,9 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
+      <head>
+        <meta name="google-site-verification" content="SClRQTWUQDku7CXv2KkWF8E6Rxe3-CGS4PBEPlpFIbM" />
+      </head>
       <Head>
         <meta name="google-site-verification" content="SClRQTWUQDku7CXv2KkWF8E6Rxe3-CGS4PBEPlpFIbM" />
       </Head>
