@@ -210,7 +210,8 @@ export default function HomePage() {
       <footer className={styles.footer}>
         <div className={styles.container}>
           <motion.p className={styles.footerText} variants={containerVariants} initial="hidden" animate="visible">
-            © 2025 Ali Sabet | <span className={styles.footerHighlight}>{t('footer')}</span>
+            © 2025 Ali Sabet | <a href='https://todo-album.vercel.app'
+            target='_blank' aria-label='Natoure rasht' className={styles.footerHighlight}>{t('footer')}</a>
           </motion.p>
         </div>
       </footer>
