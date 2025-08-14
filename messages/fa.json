@@ -1,10 +1,10 @@
 {
   "Portfolio": {
     "name": "علی شفیعی ثابت",
-    "intro": "توسعه‌دهنده فول‌استک با علاقه به ایجاد برنامه‌های وب نوآورانه",
+    "intro": "توسعه‌دهنده فول‌استک با علاقه به ایجاد برنامه‌های موبایل و وب نوآورانه",
     "skills": {
       "title": "مهارت‌ها",
-      "list": ["NextJS", "React", "JavaScript", "FastAPI", "Prisma", "MySQL"]
+      "list": ["NextJS", "React", "JavaScript", "FastAPI", "Prisma", "MySQL","React Native Expo","CSS"]
     },
     "projects": {
       "title": "پروژه‌ها",
