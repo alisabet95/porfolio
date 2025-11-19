@@ -3,10 +3,12 @@
 
 @font-face {
   font-family: 'Shabnam';
-  src: url('https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.woff2') format('woff2');
+  src: url('/fonts/shabnam/Shabnam-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
 
 @font-face {
   font-family: 'Inter';
@@ -15,9 +17,14 @@
   font-style: normal;
 }
 
+
+p,h1,h2,h3,h4,h5,strong,a,div,ul,ol,li,body{
+font-family: "Shabnam";
+}
+
 body {
   font-family: 'Inter', sans-serif;
-  @apply text-gray-900;
+
 }
 
 html[lang="fa"] {
@@ -97,4 +104,8 @@ border-radius: 10px;
 
 .link-to-site:hover{
 background-color: rgb(15, 15, 213);
+}
+
+p{
+color:bisque;
 }

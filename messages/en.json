@@ -1,14 +1,36 @@
 {
   "Portfolio": {
     "name": "Ali Sabet",
-    "intro": "Full-Stack Developer passionate about creating innovative web applications",
+    "intro": "Full-Stack Developer passionate about creating innovative web and mobile applications",
     "skills": {
       "title": "Skills",
-      "list": ["Next.js", "React", "JavaScript", "FastAPI", "Prisma", "MySQL"]
+      "list": [
+        "Next.js",
+        "React",
+        "React Native",
+        "Expo",
+        "JavaScript",
+        "FastAPI",
+        "Prisma",
+        "MySQL",
+        "Express.js",
+        "Node.js",
+        "AI Integration"
+      ]
     },
     "projects": {
       "title": "Projects",
       "list": [
+        {
+          "name": "Danai-e",
+          "description": "AI-powered learning assistant that creates quizzes and provides visual learning experiences",
+          "url": "https://danai-e.ir"
+        },
+        {
+          "name": "Kalario",
+          "description": "Modern e-commerce platform with Android app, web app, CRM features, messaging, and maps integration",
+          "url": "https://kalario-co.ir"
+        },
         {
           "name": "Natoure Rasht",
           "description": "A scavenger hunt project for engaging local businesses in Rasht",
@@ -18,6 +40,16 @@
           "name": "House of Usha",
           "description": "An online clothing shop with modern design and functionality",
           "url": "https://usha-house.ir"
+        },
+        {
+          "name": "Baremi",
+          "description": "Open-source calculator app for teachers to simplify student grading and calculations",
+          "url": "/baremi.zip"
+        },
+        {
+          "name": "Gilly Cooking App",
+          "description": "Comprehensive cooking application with AI assistant (Pari) for recipe management and cooking guidance",
+          "url": "#"
         }
       ]
     },
