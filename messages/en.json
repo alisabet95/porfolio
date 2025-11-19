@@ -1,22 +1,10 @@
 {
   "Portfolio": {
     "name": "Ali Sabet",
-    "intro": "Full-Stack Developer passionate about creating innovative web and mobile applications",
+    "intro": "Full-Stack Developer passionate about creating innovative web applications",
     "skills": {
       "title": "Skills",
-      "list": [
-        "Next.js",
-        "React",
-        "React Native",
-        "Expo",
-        "JavaScript",
-        "FastAPI",
-        "Prisma",
-        "MySQL",
-        "Express.js",
-        "Node.js",
-        "AI Integration"
-      ]
+      "list": ["Next.js", "React", "JavaScript", "FastAPI", "Prisma", "MySQL"]
     },
     "projects": {
       "title": "Projects",
