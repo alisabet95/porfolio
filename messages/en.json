@@ -24,6 +24,11 @@
       "title": "Projects",
       "list": [
         {
+          "name": "Ronak Dam Parsian",
+          "description": "A comprehensive ranch management platform with a web application and a React Native Expo mobile application for managing and monitoring ranch operations",
+          "url": "https://ronak-dam.ir"
+        },
+        {
           "name": "Danai-e",
           "description": "AI-powered learning assistant that creates quizzes and provides visual learning experiences",
           "url": "https://danai-e.ir"
@@ -52,6 +57,16 @@
           "name": "Gilly Cooking App",
           "description": "Comprehensive cooking application with AI assistant (Pari) for recipe management and cooking guidance",
           "url": "#"
+        },
+        {
+          "name": "expo-persian-date-wheel",
+          "description": "An open-source Persian calendar date and time picker for React Native and Expo applications",
+          "url": "https://github.com/alisabet95/expo-persian-date-wheel"
+        },
+        {
+          "name": "react-persian-date-wheel",
+          "description": "An open-source Persian calendar date picker for React and web applications",
+          "url": "https://github.com/alisabet95/react-persian-date-wheel"
         }
       ]
     },
