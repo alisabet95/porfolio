@@ -81,15 +81,17 @@
           "name": "expo-persian-date-wheel",
           "description": "An open-source Persian calendar date and time picker for React Native and Expo applications",
           "url": "https://github.com/alisabet95/expo-persian-date-wheel",
-          "technologies": "React Native, Expo, TypeScript",
-          "impact": "over 3 successful (non-me) installs😭"
+          "technologies": "React Native, TypeScript",
+          "impact": "over 3 successful (non-me) installs😭 
+just use npm install expo-persian-date-wheel"
         },
         {
           "name": "react-persian-date-wheel",
           "description": "An open-source Persian calendar date picker for React and web applications",
           "url": "https://github.com/alisabet95/react-persian-date-wheel",
           "technologies": "React, TypeScript",
-          "impact": "Github fave and Persian community impact"
+          "impact": "Github fave and Persian community impact
+just use npm install react-persian-date-wheel"
         }
       ]
     },
