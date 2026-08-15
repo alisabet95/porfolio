@@ -19,4 +19,8 @@ const allProjectImages = [
   "/gilly/2.jpg",
 
   // Add more images from other projects as needed
+  "/ronak/1.jpg",
+  "/ronak/2.jpg",
+  "/ronak/3.jpg",
+  "/ronak/4.png",
 ];
