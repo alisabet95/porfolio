@@ -28,6 +28,16 @@ export default function HomePage() {
     visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
   };
 
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
     <div className={styles.main}>
       {/* Header Section */}
@@ -40,13 +50,28 @@ export default function HomePage() {
             variants={containerVariants}
           >
             <div className={styles.headerText}>
-              <h1 className={styles.h1}>{t("name")}</h1>
-              <p dir="rtl" className={styles.intro}>
+              <motion.h1
+                className={styles.h1}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                {t("name")}
+              </motion.h1>
+              <motion.p
+                dir={locale === "fa" ? "rtl" : "ltr"}
+                className={styles.intro}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 {t("intro")}
-              </p>
+              </motion.p>
               <motion.div
                 className={styles.taglineWrapper}
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <p className={styles.tagline}>
                   {locale === "en"
@@ -57,8 +82,10 @@ export default function HomePage() {
             </div>
             <motion.div
               className={styles.imageContainer}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+              whileHover={{ scale: 1.05, rotate: 2 }}
             >
               <Image
                 src="/ali.jpg"
@@ -66,11 +93,16 @@ export default function HomePage() {
                 width={220}
                 height={220}
                 className={styles.profileImage}
+                priority
               />
-              <div className={styles.imageOverlay}></div>
             </motion.div>
-            <LanguageSwitcher current={locale} />
           </motion.div>
+          <div className={styles.languageWrapper}>
+            <LanguageSwitcher current={locale} />
+          </div>
+        </div>
+        <div className={styles.headerDecoration}>
+          <div className={styles.decorationCircle2}></div>
         </div>
       </header>
 
@@ -80,7 +112,8 @@ export default function HomePage() {
           <motion.h2
             className={styles.h2}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
             {locale === "en" ? "About Me" : "درباره من"}
@@ -89,35 +122,35 @@ export default function HomePage() {
             className={styles.aboutContent}
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             {locale === "en" && (
               <>
-                <p className={styles.paragraph} style={{ color: "#f0f0f0" }}>
-                  I&apos;m a dedicated Full-Stack Developer with over 5 years of
-                  experience crafting innovative and scalable web applications.
-                  My expertise lies in modern JavaScript frameworks, backend
-                  technologies, and creating intuitive user experiences that
-                  leave a lasting impact.
+                <p className={styles.paragraph}>
+                  I&lsquo;m a dedicated Full-Stack Developer with over 5 years
+                  of experience crafting innovative and scalable web
+                  applications. My expertise lies in modern JavaScript
+                  frameworks, backend technologies, and creating intuitive user
+                  experiences that leave a lasting impact.
                 </p>
-                <p className={styles.paragraph} style={{ color: "#f0f0f0" }}>
-                  When I&apos;m not coding, you can find me exploring new
-                  technologies, contributing to open-source projects,solving
-                  unsolvable puzzles, reading a good muder-mystery book or
+                <p className={styles.paragraph}>
+                  When I&lsquo;m not coding, you can find me exploring new
+                  technologies, contributing to open-source projects, solving
+                  unsolvable puzzles, reading a good murder-mystery book or
                   enjoying a refreshing hike in nature.
                 </p>
               </>
             )}
             {locale === "fa" && (
               <>
-                <p className={styles.paragraph} style={{ color: "#f0f0f0" }}>
+                <p className={styles.paragraph}>
                   من یک توسعه‌دهنده فول‌استک با بیش از سه سال تجربه در ساخت
                   برنامه‌های وب و اپلیکیشن اندرویدِ حرفه‌ای و نوآورانه هستم.
                   تخصص من در فریم‌ورکهای مدرن جاوااسکریپت، فناوری‌های بک‌اند و
                   ایجاد تجربه‌های کاربری بصری است که تأثیر ماندگاری دارند.
                 </p>
-                <p className={styles.paragraph} style={{ color: "#f0f0f0" }}>
-                  <br />
+                <p className={styles.paragraph}>
                   وقتی کد نمی‌نویسم، مشغول مطالعه فناوری‌های جدید، مشارکت در
                   پروژه‌های متن‌باز، لذت بردن از حل کردن یک پازل پیچیده یا
                   خواندن یک کتاب جنایی هستم. (اگه شما هم آگاتا کریستی رو خیلی
@@ -133,19 +166,20 @@ export default function HomePage() {
       <section className={styles.skillsSection}>
         <div className={styles.container}>
           <motion.h2
-            className={styles.h2}
-            style={{ color: "#000" }}
+            className={styles.skillsTitle}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
             {t("skills.title")}
           </motion.h2>
           <motion.div
             className={styles.skillsGrid}
-            variants={containerVariants}
+            variants={staggerContainer}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
             {t.raw("skills.list").map((skill: string, index: number) => (
               <motion.div
@@ -154,9 +188,11 @@ export default function HomePage() {
                   styles[`skillColor${index % 4}`]
                 }`}
                 variants={itemVariants}
-                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {skill}
+                <span className={styles.skillText}>{skill}</span>
+                <div className={styles.skillGlow}></div>
               </motion.div>
             ))}
           </motion.div>
@@ -169,81 +205,94 @@ export default function HomePage() {
           <motion.h2
             className={styles.h2}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
             {t("projects.title")}
           </motion.h2>
           <motion.div
             className={styles.projectsGrid}
-            variants={containerVariants}
+            variants={staggerContainer}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
           >
             {t.raw("projects.list").map((project: any, index: number) => (
               <motion.div
                 key={index}
                 className={styles.projectCard}
                 variants={itemVariants}
-                whileHover={{ scale: 1.03, y: -5 }}
+                whileHover={{ scale: 1.02, y: -8 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                <h3 className={styles.h3}>{project.name}</h3>
-                <p className={styles.paragraph}>{project.description}</p>
+                <div className={styles.projectHeader}>
+                  <h3 className={styles.h3}>{project.name}</h3>
+                  <div className={styles.projectNumber}>#{index + 1}</div>
+                </div>
+                <p className={styles.projectDescription}>
+                  {project.description}
+                </p>
 
-                {/* Technologies */}
-                <p className={styles.projectMeta}>
-                  <strong>
+                <div className={styles.projectMeta}>
+                  <span className={styles.metaLabel}>
                     {locale === "en" ? "Technologies:" : "فناوری‌ها:"}
-                  </strong>{" "}
-                  {project.name === "Danai-e" || project.name === "دانای-ای"
-                    ? "React Native, Expo, Next.js, Express.js, AI Integration"
-                    : project.name === "Kalario" || project.name === "کالاریو"
-                    ? "React Native, Expo, Next.js, Express.js, MySQL"
-                    : project.name === "Baremi" || project.name === "بارمی"
-                    ? "React Native, Expo, JavaScript"
-                    : project.name === "Gilly Cooking App" ||
-                      project.name === "اپ آشپزی گیلی"
-                    ? "React Native, AI Integration, Firebase"
-                    : "Next.js, Prisma, MySQL, React, Tailwind"}
-                </p>
+                  </span>
+                  <span className={styles.metaValue}>
+                    {project.name === "Danai-e" || project.name === "دانای-ای"
+                      ? "React Native, Expo, Next.js, Express.js, AI"
+                      : project.name === "Kalario" || project.name === "کالاریو"
+                        ? "React Native, Expo, Next.js, Express.js, MySQL"
+                        : project.name === "Baremi" || project.name === "بارمی"
+                          ? "React Native, Expo, JavaScript"
+                          : project.name === "Gilly Cooking App" ||
+                              project.name === "اپ آشپزی گیلی"
+                            ? "React Native, AI, Firebase"
+                            : "Next.js, Prisma, MySQL, React, Tailwind"}
+                  </span>
+                </div>
 
-                {/* Impact */}
-                <p className={styles.projectMeta}>
-                  <strong>{locale === "en" ? "Impact:" : "تأثیر:"}</strong>{" "}
-                  {project.name === "Danai-e" || project.name === "دانای-ای"
-                    ? locale === "en"
-                      ? "AI-powered quiz generation and visual learning platform"
-                      : "پلتفرم تولید آزمون و یادگیری بصری مبتنی بر هوش مصنوعی"
-                    : project.name === "Kalario" || project.name === "کالاریو"
-                    ? locale === "en"
-                      ? "Complete e-commerce solution with real-time messaging"
-                      : "راه‌حل کامل فروشگاهی با پیام‌رسانی لحظه‌ای"
-                    : project.name === "Baremi" || project.name === "بارمی"
-                    ? locale === "en"
-                      ? "Open-source tool for educators"
-                      : "ابزار متن‌باز برای مربیان"
-                    : project.name === "Gilly Cooking App" ||
-                      project.name === "اپ آشپزی گیلی"
-                    ? locale === "en"
-                      ? "AI-powered cooking assistant"
-                      : "دستیار آشپزی مبتنی بر هوش مصنوعی"
-                    : locale === "en"
-                    ? index === 0
-                      ? "Engaged 50+ local businesses in Rasht"
-                      : "Increased online sales by 30%"
-                    : index === 0
-                    ? "افزایش فروش بیزینسهای شهری"
-                    : "طراحی پلتفورم فروش و افزایش 30درصدی"}
-                </p>
+                <div className={styles.projectMeta}>
+                  <span className={styles.metaLabel}>
+                    {locale === "en" ? "Impact:" : "تأثیر:"}
+                  </span>
+                  <span className={styles.metaValue}>
+                    {project.name === "Danai-e" || project.name === "دانای-ای"
+                      ? locale === "en"
+                        ? "AI-powered quiz & visual learning"
+                        : "آزمون و یادگیری بصری با AI"
+                      : project.name === "Kalario" || project.name === "کالاریو"
+                        ? locale === "en"
+                          ? "E-commerce with real-time messaging"
+                          : "فروشگاهی با پیام‌رسانی"
+                        : project.name === "Baremi" || project.name === "بارمی"
+                          ? locale === "en"
+                            ? "Open-source educator tool"
+                            : "ابزار متن‌باز آموزشی"
+                          : project.name === "Gilly Cooking App" ||
+                              project.name === "اپ آشپزی گیلی"
+                            ? locale === "en"
+                              ? "AI cooking assistant"
+                              : "دستیار آشپزی AI"
+                            : locale === "en"
+                              ? index === 0
+                                ? "50+ local businesses engaged"
+                                : "30% sales increase"
+                              : index === 0
+                                ? "افزایش فروش کسب‌وکارها"
+                                : "افزایش ۳۰٪ فروش"}
+                  </span>
+                </div>
 
-                {/* Project Link */}
                 <div className={styles.projectLinkWrapper}>
                   <a
                     href={project.url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className={styles.projectLink}
                   >
-                    {locale === "en" ? "Visit Project →" : "→ مشاهده پروژه"}
+                    {locale === "en" ? "View Project →" : "مشاهده پروژه ←"}
+                    <span className={styles.linkArrow}>→</span>
                   </a>
                 </div>
               </motion.div>
@@ -252,13 +301,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Photo Gallery Section - NEW SECTION */}
+      {/* Photo Gallery Section */}
       <section className={styles.section}>
         <div className={styles.container}>
           <motion.h2
             className={styles.h2}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
             {locale === "en" ? "Project Gallery" : "آلبوم تصاویر پروژه‌ها"}
@@ -266,7 +316,8 @@ export default function HomePage() {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             <ProjectGallery
               images={allProjectImages}
@@ -278,71 +329,88 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section className={styles.skillsSection}>
+      <section className={styles.contactSection}>
         <div className={styles.container}>
           <motion.h2
-            className={styles.h2}
-            style={{ color: "#000" }}
+            className={styles.contactTitle}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
           >
             {t("contact.title")}
           </motion.h2>
           <motion.p
-            className={styles.paragraph}
-            style={{ marginBottom: "30px" }}
+            className={styles.contactSubtitle}
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             {locale === "en"
               ? "Interested in collaborating or have a project in mind? Let's connect and bring your ideas to life!"
-              : "علاقه‌مند به همکاری هستید یا  ایده‌ای برای پروژه دارید؟  خوشحال میشم با من ارتباط برقرار کنید و ایده‌هامونو  به واقعیت تبدیل کنیم!"}
+              : "علاقه‌مند به همکاری هستید یا ایده‌ای برای پروژه دارید؟ خوشحال میشم با من ارتباط برقرار کنید و ایده‌هامون رو به واقعیت تبدیل کنیم!"}
           </motion.p>
           <motion.div
-            variants={itemVariants}
+            variants={staggerContainer}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             className={styles.contactLinks}
           >
             <div className={styles.socialLinks}>
-              <a
+              <motion.a
                 href="https://instagram.com/ali.ssabet"
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className={styles.socialLink}
+                variants={itemVariants}
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <FaSquareInstagram className={styles.socialIconInstagram} />
-                Instagram
-              </a>
-              <a
+                <span>Instagram</span>
+              </motion.a>
+              <motion.a
                 href="mailto:ali.ssabet1995@gmail.com"
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Email"
                 className={styles.socialLink}
+                variants={itemVariants}
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <BiLogoGmail className={styles.socialIconGmail} />
-                Gmail
-              </a>
-              <a
+                <span>Gmail</span>
+              </motion.a>
+              <motion.a
                 href="https://github.com/alisabet95"
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
                 className={styles.socialLink}
+                variants={itemVariants}
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <FaGithub className={styles.socialIconGithub} />
-                GitHub
-              </a>
-              <a
+                <span>GitHub</span>
+              </motion.a>
+              <motion.a
                 href="https://t.me/ali_ssabet"
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Telegram"
                 className={styles.socialLink}
+                variants={itemVariants}
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <FaTelegram className={styles.socialIconTelegram} />
-                Telegram
-              </a>
+                <span>Telegram</span>
+              </motion.a>
             </div>
           </motion.div>
         </div>
@@ -355,12 +423,14 @@ export default function HomePage() {
             className={styles.footerText}
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
             © 2025 Ali Sabet |{" "}
             <a
               href="https://todo-album.vercel.app"
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Natoure rasht"
               className={styles.footerHighlight}
             >
