@@ -145,7 +145,7 @@ export default function ProjectGallery({
               onClick={goToPrev}
               aria-label={locale === "en" ? "Previous image" : "تصویر قبلی"}
             >
-              ‹
+              ›
             </button>
 
             {/* SIMPLE IMAGE CONTAINER - FIXED */}
@@ -176,7 +176,7 @@ export default function ProjectGallery({
               onClick={goToNext}
               aria-label={locale === "en" ? "Next image" : "تصویر بعدی"}
             >
-              ›
+              ‹
             </button>
 
             <div className={styles.imageCounter}>
