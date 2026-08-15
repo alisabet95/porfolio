@@ -5,6 +5,7 @@
     "skills": {
       "title": "مهارت‌ها",
       "list": [
+        "JavaScript",
         "NextJS",
         "React",
         "Express.JS",
@@ -12,12 +13,16 @@
         "Expo",
         "AI Development",
         "Python",
-        "JavaScript",
         "FastAPI",
         "Prisma",
+        "PostgresSQL",
         "MySQL",
-        "React Native Expo",
-        "CSS"
+        "Embedding",
+        "Docker",
+        "CSS",
+        "NodeJS",
+        "Deploying",
+        "Database Design"
       ]
     },
     "projects": {
